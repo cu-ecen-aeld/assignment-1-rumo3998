@@ -18,5 +18,19 @@ void test_validate_my_username()
      * TODO: Replace the line below with your code here as described above to verify your /conf/username.txt 
      * config file and my_username() functions are setup properly
      */
-    TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+    /* comment out previous assertion 
+     * TEST_ASSERT_TRUE_MESSAGE(false,"AESD students, please fix me!");
+     */
+	//char ptr to user_name given by my_username()
+	const char *charptr; 
+	char *charptr2;
+
+	//set the charptrs equal to the vals provided by my_usrname and malloc_usr..	
+	charptr = my_username();
+	charptr2 = malloc_username_from_conf_file();
+
+	//use assertion to  determine string equality
+	TEST_ASSERT_EQUAL_STRING_MESSAGE(charptr, charptr2, "FAILURE: usr name mismatch");
+	//username-from-conf-file spec, charptr must be freed by user
+	free(charptr2);
 }
